@@ -12,6 +12,7 @@
             --background-color: #ffffff;
             --light-gray: #F3F4F6;
             --dark-gray: #6B7280;
+            --highlight-color: #9333EA;
         }
 
         /* Reset stylów i podstawowe ustawienia */
@@ -26,26 +27,27 @@
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--background-color);
+            padding: 1rem;
         }
 
         /* Hero sekcja */
         .hero {
-            padding: 6rem 1.5rem 3rem;
+            padding: 4rem 1.5rem;
             background: linear-gradient(to bottom, var(--light-gray), var(--background-color));
             text-align: center;
         }
 
         .hero-container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .hero-text h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-size: clamp(2rem, 5vw, 3rem);
             margin-bottom: 1rem;
             background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
@@ -67,103 +69,66 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
-        /* Menu mobilne */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                right: 0;
-                background: white;
-                padding: 1rem;
-                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-                z-index: 1000;
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links a {
-                padding: 0.5rem 0;
-                color: var(--dark-gray);
-            }
-        }
-
-        /* Nawigacja */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
+        /* Sekcje treści */
+        .cv-section {
             background: var(--background-color);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            padding: 1rem;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .cv-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.75rem;
+            text-decoration: underline;
         }
 
-        .logo {
-            font-size: 1.5rem;
+        .highlight {
+            color: var(--highlight-color);
             font-weight: bold;
-            color: var(--primary-color);
-            text-decoration: none;
         }
 
-        .nav-links {
-            display: none;
+        .cv-item {
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--primary-color);
         }
 
-        .nav-links a {
+        .cv-item h4 {
+            font-size: 1.2rem;
+            color: var(--text-color);
+        }
+
+        .cv-item .date {
             color: var(--dark-gray);
-            text-decoration: none;
-            transition: color 0.3s ease;
+            font-size: 0.9rem;
         }
 
-        .nav-links a:hover,
-        .nav-links a:focus {
-            color: var(--primary-color);
+        .cv-item p {
+            color: #4B5563;
+            margin-top: 0.5rem;
         }
 
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill-item {
+            background: var(--light-gray);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="logo">K.</a>
-            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
-            <div class="nav-links" id="nav-links">
-                <a href="#about">O mnie</a>
-                <a href="#experience">Doświadczenie</a>
-                <a href="#projects">Projekty</a>
-                <a href="#education">Wykształcenie</a>
-                <a href="#contact">Kontakt</a>
-            </div>
-        </div>
-    </nav>
-
     <header class="hero">
         <div class="hero-container">
             <div class="hero-image">
@@ -171,7 +136,7 @@
             </div>
             <div class="hero-text">
                 <h1>Kasia Dobrzańska</h1>
-                <p>Studentka Sciences Po, specjalizująca się w analizie politycznej regionu Indo-Pacyfiku. Moje zainteresowania koncentrują się wokół praw człowieka, polityki międzynarodowej oraz zrównoważonego rozwoju.</p>
+                <p><span class="highlight">Studentka Sciences Po</span>, specjalizująca się w analizie politycznej regionu Indo-Pacyfiku. Moje zainteresowania koncentrują się wokół <span class="highlight">praw człowieka</span>, polityki międzynarodowej oraz zrównoważonego rozwoju.</p>
             </div>
         </div>
     </header>
@@ -179,7 +144,7 @@
     <main>
         <section id="about" class="cv-section">
             <h3>O mnie</h3>
-            <p>Jestem studentką Sciences Po w Paryżu, gdzie specjalizuję się w analizie politycznej ze szczególnym uwzględnieniem regionu Indo-Pacyfiku. Moje zainteresowania koncentrują się wokół praw człowieka, polityki międzynarodowej oraz zrównoważonego rozwoju.</p>
+            <p>Jestem studentką <span class="highlight">Sciences Po w Paryżu</span>, gdzie specjalizuję się w analizie politycznej ze szczególnym uwzględnieniem regionu <span class="highlight">Indo-Pacyfiku</span>. Moje zainteresowania koncentrują się wokół <span class="highlight">praw człowieka</span>, polityki międzynarodowej oraz zrównoważonego rozwoju.</p>
             <div class="skills-grid">
                 <div class="skill-item">Analiza Polityczna</div>
                 <div class="skill-item">Prawa Człowieka</div>
@@ -188,23 +153,38 @@
             </div>
         </section>
 
-        <!-- Inne sekcje ... -->
+        <section id="experience" class="cv-section">
+            <h3>Doświadczenie Zawodowe</h3>
+            <div class="cv-item">
+                <h4>Political Analysis Specialist</h4>
+                <div class="date">Think Tank INE • 2023 - obecnie</div>
+                <p>Analiza polityk publicznych i trendów międzynarodowych w regionie <span class="highlight">Indo-Pacyfiku</span>.</p>
+            </div>
+            <div class="cv-item">
+                <h4>Project Intern</h4>
+                <div class="date">Ministerstwo Cyfryzacji • 2022 - 2023</div>
+                <p>Wsparcie w projektach związanych z cyfryzacją administracji publicznej.</p>
+            </div>
+            <div class="cv-item">
+                <h4>Educational Consultant</h4>
+                <div class="date">Ivy Consultants • 2021 - 2022</div>
+                <p>Doradztwo edukacyjne i wsparcie w procesie aplikacji na uczelnie zagraniczne.</p>
+            </div>
+        </section>
 
+        <section id="projects" class="cv-section">
+            <h3>Projekty</h3>
+            <div class="cv-item">
+                <h4>Youth Forced to Flee</h4>
+                <div class="date">UNHCR</div>
+                <p>Projekt badawczy analizujący sytuację młodych uchodźców i ich integrację w społeczeństwie.</p>
+            </div>
+            <div class="cv-item">
+                <h4>Mitchell L. McLean Trial Competition</h4>
+                <div class="date">Sciences Po</div>
+                <p>Udział w międzynarodowym konkursie prawniczym, skupiającym się na <span class="highlight">prawach człowieka</span>.</p>
+            </div>
+        </section>
     </main>
-
-    <script>
-        function toggleMenu() {
-            const navLinks = document.getElementById('nav-links');
-            navLinks.classList.toggle('active');
-
-            // Zmiana przycisku ☰ na ✖ w zależności od stanu menu
-            const menuButton = document.querySelector('.mobile-menu-btn');
-            if (navLinks.classList.contains('active')) {
-                menuButton.textContent = '✖';
-            } else {
-                menuButton.textContent = '☰';
-            }
-        }
-    </script>
 </body>
 </html>
